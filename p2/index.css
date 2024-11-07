@@ -1,0 +1,108 @@
+
+input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+textarea, select, input, button { outline: none; }
+::-webkit-scrollbar {display: none;}
+
+img {border: 0px; padding: 0px; margin: 0px}
+body {font-size: 16px; color: black; margin: 0px; padding: 0px; font-family: 'Noto Sans KR', 'sans-serif'; background-image: url('images/background.png'); background-size: cover; background-repeat: no-repeat; background-position: center}
+a {text-decoration: none}
+
+.clear {clear: both}
+
+.bt_type_1 {height: 60px; line-height: 60px; margin: 5%; border-radius: 10px; background-image: url('images/op70.png'); color: white; text-align: center; font-size: 20px; }
+
+.land_logo {position: fixed; width: 80%; height: 80px; padding: 5% 0px; left: 10%; top: calc(50vh - 80px); background-image: url('images/op40.png'); color: white; border-radius: 10px; text-align: center}
+.land_bt {display: none; position: fixed; width: 80%; height: 70px; line-height: 70px; left: 10%; bottom: 20%; text-align: center; font-size: 24px; font-weight: bold}
+.land_login {display: none; position: fixed; width: 80%; height: 70px; line-height: 70px; left: 10%; bottom: 20%; text-align: center; font-size: 24px; font-weight: bold}
+.land_signup {display: none; position: fixed; width: 80%; height: 70px; line-height: 70px; left: 10%; bottom: 15%; text-align: center; font-size: 12px}
+
+.land_logo_t {font-size: 40px; line-height: 50px;}
+.land_logo_c {font-size: 20px; line-height: 30px;}
+
+
+.header {position: relative; width: 100%; height: 130px; line-height: 130px; font-size: 28px; font-weight: bold; background-image: url('images/Page_Bar_up.png'); background-size: cover; background-position: center;}
+.header_close {position: absolute; width: 40px; height: 40px; color: white; text-align: center; border-radius: 50%; top: 10px; right: 10px; background-image: url('images/Button_Close.png'); z-index: 101; background-size: 30px; background-repeat: no-repeat; background-position: center;}
+.header_level {position: absolute; width: 80px; height: 80px; line-height: 80px; color: white; text-align: center; border-radius: 50px; top: 10px; left: 10px; background-size: cover; background-position: center; background-image: url('images/profile_BG.png'); z-index: 101;}
+.header_score {position: absolute; width: 180px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 20px; top: 20px; left: calc(50% - 90px); background-position: center; background-size: 100%; background-repeat: no-repeat; background-image: url('images/Coin_Bar.png'); z-index: 101; font-size: 15px; font-weight: bold;}
+.header_title {position: absolute; width: 100%; height: 50px; line-height: 50px; text-align:center; font-weight: bold; font-size: 40px; bottom: 10px; left: 0px; color: white}
+.header_char {position: absolute; width: 110px; height: 110px; bottom: 0px; left: 65%; background-size: cover; background-position: center; z-index:1}
+
+.footer {position: fixed; width: 100%; height: 380px; line-height: 20px; left: 0px; bottom: 0px; text-align: center; font-size: 11px; z-index: 101}
+.footer_se {position: fixed; width: 100%; height: 100px; line-height: 20px; left: 0px; bottom: 0px; text-align: center; z-index: 101; background-image: url('images/Page_Bar_Dawn.png'); background-position: center; background-size: cover; background-repeat: no-repeat;}
+
+.footer_m1 {position: absolute; top: 0px; left: 0px; width: 180px; height: 110px; background-image: url('images/MainButton_Idol_OFF.png'); background-size: 180px; background-position: left center; background-repeat: no-repeat;}
+.footer_m2 {position: absolute; top: 130px; left: 0px; width: 180px; height: 110px; background-image: url('images/MainButton_Chart_OFF.png'); background-size: 180px; background-position: left center; background-repeat: no-repeat;}
+.footer_m3 {position: absolute; top: 260px; left: 0px; width: 180px; height: 110px; background-image: url('images/MainButton_Company_OFF.png'); background-size: 180px; background-position: left center; background-repeat: no-repeat;}
+.footer_m4 {position: absolute; top: 0px; right: 0px; width: 180px; height: 110px; background-image: url('images/Button_Shop_OFF.png'); background-size: 180px; background-position: left center; background-repeat: no-repeat;}
+.footer_m5 {position: absolute; top: 130px; right: 0px; width: 180px; height: 110px; background-image: url('images/MainButton_Mission_OFF.png'); background-size: 180px; background-position: left center; background-repeat: no-repeat;}
+.footer_m6 {position: absolute; top: 260px; right: 0px; width: 180px; height: 110px; background-image: url('images/MainButton_Schedule_OFF.png'); background-size: 180px; background-position: left center; background-repeat: no-repeat;}
+
+.footer_m1:hover {background-image: url('images/MainButton_Idol_ON.png'); cursor: pointer;}
+.footer_m2:hover {background-image: url('images/MainButton_Chart_ON.png'); cursor: pointer;}
+.footer_m3:hover {background-image: url('images/MainButton_Company_ON.png'); cursor: pointer;}
+.footer_m4:hover {background-image: url('images/Button_Shop_ON.png'); cursor: pointer;}
+.footer_m5:hover {background-image: url('images/MainButton_Mission_ON.png'); cursor: pointer;}
+.footer_m6:hover {background-image: url('images/MainButton_Schedule_ON.png'); cursor: pointer;}
+
+
+.footer_se_m1 {position: absolute; left: 0px; bottom: 0px; width: 20%; height: 100px; background-image: url('images/Button_Company_OFF.png'); background-size: 80%; background-position: center; background-repeat: no-repeat;}
+.footer_se_m1:hover {cursor: pointer; background-image: url('images/Button_Company_ON.png')}
+.footer_se_m2 {position: absolute; left: 20%; bottom: 0px; width: 20%; height: 100px; background-image: url('images/Button_Idol_OFF.png'); background-size: 80%; background-position: center; background-repeat: no-repeat;}
+.footer_se_m2:hover {cursor: pointer; background-image: url('images/Button_Idol_ON.png')}
+.footer_se_m3 {position: absolute; left: 40%; bottom: 0px; width: 20%; height: 100px; background-image: url('images/Button_Schedule_OFF.png'); background-size: 80%; background-position: center; background-repeat: no-repeat;}
+.footer_se_m3:hover {cursor: pointer; background-image: url('images/Button_Schedule_ON.png')}
+.footer_se_m4 {position: absolute; left: 60%; bottom: 0px; width: 20%; height: 100px; background-image: url('images/Button_Chart_OFF.png'); background-size: 80%; background-position: center; background-repeat: no-repeat;}
+.footer_se_m4:hover {cursor: pointer; background-image: url('images/Button_Chart_ON.png')}
+.footer_se_m5 {position: absolute; left: 80%; bottom: 0px; width: 20%; height: 100px; background-image: url('images/Button_Mission_OFF.png'); background-size: 80%; background-position: center; background-repeat: no-repeat;}
+.footer_se_m5:hover {cursor: pointer; background-image: url('images/Button_Mission_ON.png')}
+
+
+
+/* main */
+.main_bg {position: fixed; width: 100%; height: 100vh; top: 0px; left: 0px; z-index: 0; background-size: cover; background-position: center; background-repeat: no-repeat}
+.main_bg_person {position: fixed; width: 100%; height: 100vh; top: 0px; left: 0px; z-index: 1; background-size: 80%; background-position: center bottom; background-repeat: no-repeat}
+
+.main_level {position: fixed; width: 80px; height: 80px; line-height: 80px; color: white; text-align: center; border-radius: 50px; top: 20px; left: 20px; background-size: cover; background-position: center; background-image: url('images/profile_BG.png'); z-index: 101;}
+.main_level_img {position: absolute; top: 2px; left: 2px; width: 76px; height: 76px; background-size: cover; background-position: center; background-image: url('images/Pic_profile.png');}
+.main_level_inner {position: absolute; top: 61px; left: 23px; width: 30px; height: 30px; line-height: 30px; text-align: center; font-size: 12px; font-weight: bold; border-radius: 50%; background-image: url('images/Level_BG.png'); background-size: cover; background-position: center;}
+
+
+.main_score {position: fixed; width: 180px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 20px; top: 40px; left: calc(50% - 90px); background-position: center; background-size: 100%; background-repeat: no-repeat; background-image: url('images/Coin_Bar.png'); z-index: 101; font-size: 15px; font-weight: bold;}
+.main_setting {position: fixed; width: 60px; height: 80px; color: white; text-align: center; border-radius: 50%; top: 20px; right: 20px; background-image: url('images/Button_Setting.png'); z-index: 101; background-size: 50px; background-repeat: no-repeat; background-position: center;}
+.main_info {position: fixed; width: 60px; height: 80px; color: white; text-align: center; border-radius: 50%; top: 100px; right: 20px; background-image: url('images/Button_Myprofile.png'); z-index: 101; background-size: 50px; background-repeat: no-repeat; background-position: center;}
+.main_inven {position: fixed; width: 60px; height: 80px; color: white; text-align: center; border-radius: 50%; top: 180px; right: 20px; background-image: url('images/Button_Inventory.png'); z-index: 101; background-size: 50px; background-repeat: no-repeat; background-position: center;}
+.main_inbox {position: fixed; width: 60px; height: 80px; color: white; text-align: center; border-radius: 50%; top: 260px; right: 20px; background-image: url('images/Button_Mail.png'); z-index: 101; background-size: 50px; background-repeat: no-repeat; background-position: center;}
+
+
+
+.idol_tab {float: left; width: 120px; margin: 5px 0px 0px 10px; height: 50px; line-height: 50px; text-align: center; color: white; background-image: url('images/Team_off.png'); background-size: cover; background-position: center;}
+.idol_tab_s {float: left; width: 120px; margin: 5px 0px 0px 10px; height: 50px; line-height: 50px; text-align: center; color: white; background-image: url('images/Team_on.png'); background-size: cover; background-position: center}
+.idol_wrap {padding: 5%}
+
+.idol_m {margin: 2.5% 0px;}
+.idol_m_p {float: left; position: relative; width: 90px; height: 140px; background-size: cover; border-radius: 10px; background-image: url('images/profile_Idol_BG.png'); background-position: center; background-repeat: no-repeat;}
+.idol_m_p_inner {position: absolute; width: 100%; height: 110px; top: 0px; left: 0px; background-size: 90%; background-position: center bottom; background-repeat: no-repeat;}
+.idol_m_p_bottom {position: absolute; width: 100%; bottom: 0px; height: 30px; line-height: 30px; color: white; font-size: 16px; font-weight: bold; text-align: center;}
+
+.idol_m_p_locked {float: left; width: 90px; height: 120px; border-radius: 10px; background-image: url('images/op40.png'); text-align: center}
+div.idol_m_p_locked img {height: 30px; margin: 45px 0px;}
+.idol_m_p_ruby {float: left; width: 90px; height: 60px; line-height: 30px; padding: 30px 0px; text-align: center; font-size: 20px; color: white; border-radius: 10px; background-image: url('images/op40.png'); text-align: center}
+
+
+.idol_m_c {float: right; width: calc(100% - 120px); height: 114px; padding: 10px; margin: 3px 0px; background-color: white; box-shadow: 0px 0px 5px gray; border-radius: 10px; color: black; font-weight: bold; font-size: 16px;}
+.idol_m_ct {font-size: 14px;}
+.idol_m_cm {float: left; width: 70px; height: 30px; line-height: 30px; padding: 0px 10px; font-size: 12px; border-radius: 5px; background-image: url('images/Button_01.png'); background-size: cover; background-position: center; margin: 5px 5px 5px 0px; color: white; text-align: center;}
+.idol_m_item {float: left; width: 30px; height: 30px; background-image: url('images/Button_02.png'); background-size: cover; background-position: center; margin: 5px 5px 0px 0px; border-radius: 5px; text-align: center}
+div.idol_m_item img {height: 20px; margin: 5px 0px;}
+.idol_m_txt {line-height: 25px; font-size: 16px; height: 50px; padding: 25px 5px;}
+.idol_attract {font-size: 16px; font-weight: bold; color: white; margin: 0px 0px 10px 0px}

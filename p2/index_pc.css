@@ -1,0 +1,79 @@
+
+input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+}
+textarea, select, input, button { outline: none; }
+::-webkit-scrollbar {display: none;}
+
+img {border: 0px; padding: 0px; margin: 0px}
+body {font-size: 16px; color: black; margin: 0px; padding: 0px; font-family: 'Noto Sans KR', 'sans-serif'}
+a {text-decoration: none}
+
+.frame {width: 430px; height: 932px; margin: calc(50vh - 500px) auto; border: 1px solid black; position: relative; background-image: url('images/background.jpg'); background-repeat: no-repeat; background-position: center}
+
+.clear {clear: both}
+
+.bt_type_1 {height: 60px; line-height: 60px; margin: 5%; border-radius: 10px; background-image: url('images/op70.png'); color: white; text-align: center; font-size: 20px; }
+
+.land_logo {position: absolute; width: 80%; height: 80px; padding: 5% 0px; left: 10%; top: calc(416px - 80px); background-image: url('images/op40.png'); color: white; border-radius: 10px; text-align: center}
+.land_bt {display: none; position: absolute; width: 80%; height: 70px; line-height: 70px; left: 10%; bottom: 20%; text-align: center; font-size: 24px; font-weight: bold}
+.land_login {display: none; position: absolute; width: 80%; height: 70px; line-height: 70px; left: 10%; bottom: 20%; text-align: center; font-size: 24px; font-weight: bold}
+.land_signup {display: none; position: absolute; width: 80%; height: 70px; line-height: 70px; left: 10%; bottom: 15%; text-align: center; font-size: 12px}
+
+.land_logo_t {font-size: 40px; line-height: 50px;}
+.land_logo_c {font-size: 20px; line-height: 30px;}
+
+
+.header {height: 60px; line-height: 60px; padding: 0px 5%; font-size: 28px; font-weight: bold}
+.footer {position: absolute; width: 100%; height: 60px; line-height: 20px; left: 0px; bottom: 0px; text-align: center; font-size: 11px; background-image: url('images/op70.png'); z-index: 101}
+.footer_m {float: left; width: 20%; color: white; text-align: center}
+div.footer_m img {height: 20px; margin: 10px 0px 0px 0px}
+.footer_m_s {float: left; width: 20%; color: white; text-align: center}
+div.footer_m_s img {height: 20px; margin: 10px 0px 0px 0px}
+
+/* main */
+.main_bg {position: absolute; width: 100%; height: 932px; top: 0px; left: 0px; z-index: 100; background-size: cover; background-position: center; background-repeat: no-repeat}
+.main_level {position: absolute; width: 80px; height: 80px; line-height: 80px; color: white; text-align: center; border-radius: 50px; top: 20px; left: 20px; background-image: url('images/op70.png'); z-index: 101}
+.main_score {position: absolute; width: 120px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 20px; top: 20px; left: calc(50% - 60px); background-image: url('images/op70.png'); z-index: 101}
+.main_my {position: absolute; width: 40px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 50%; top: 20px; right: 70px; background-image: url('images/op70.png'); z-index: 101}
+div.main_my img {height: 20px; margin: 10px 0px}
+
+.main_setting {position: absolute; width: 40px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 50%; top: 20px; right: 20px; background-image: url('images/op70.png'); z-index: 101}
+div.main_setting img {height: 20px; margin: 10px 0px}
+
+.main_inven {position: absolute; width: 40px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 50%; top: 200px; right: 20px; background-image: url('images/op70.png'); z-index: 101}
+div.main_inven img {height: 20px; margin: 10px 0px}
+
+.main_inbox {position: absolute; width: 40px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 50%; top: 260px; right: 20px; background-image: url('images/op70.png'); z-index: 101}
+div.main_inbox img {height: 20px; margin: 10px 0px}
+
+.main_store {position: absolute; width: 40px; height: 40px; line-height: 40px; color: white; text-align: center; border-radius: 50%; top: 320px; right: 20px; background-image: url('images/op70.png'); z-index: 101}
+div.main_store img {height: 20px; margin: 10px 0px}
+
+
+.idol_tab_s {float: left; width: 100px; margin: 0px 1px 0px 0px; height: 50px; line-height: 50px; text-align: center; color: white; background-image: url('images/op40.png');}
+.idol_tab {float: left; width: 100px; margin: 0px 1px 0px 0px; height: 50px; line-height: 50px; text-align: center; color: white; background-image: url('images/op70.png');}
+.idol_wrap {padding: 5%; background-image: url('images/op40.png');}
+
+.idol_m {margin: 2.5% 0px;}
+.idol_m_p {float: left; width: 90px; height: 120px; background-size: cover; border-radius: 10px; background-position: center; background-repeat: no-repeat;}
+.idol_m_p_locked {float: left; width: 90px; height: 120px; border-radius: 10px; background-image: url('images/op40.png'); text-align: center}
+div.idol_m_p_locked img {height: 30px; margin: 45px 0px;}
+.idol_m_p_ruby {float: left; width: 90px; height: 60px; line-height: 30px; padding: 30px 0px; text-align: center; font-size: 20px; color: white; border-radius: 10px; background-image: url('images/op40.png'); text-align: center}
+
+
+.idol_m_c {float: right; width: calc(100% - 120px); height: 100px; padding: 10px; background-image: url('images/op40.png'); border-radius: 10px; color: white}
+.idol_m_ct {font-size: 14px;}
+.idol_m_cm {float: left; height: 24px; line-height: 24px; padding: 0px 10px; font-size: 12px; border-radius: 5px; background-image: url('images/op70.png'); margin: 5px 5px 5px 0px}
+.idol_m_item {float: left; width: 24px; height: 24px; background-image: url('images/op70.png'); margin: 5px 5px 0px 0px; border-radius: 5px; text-align: center}
+div.idol_m_item img {height: 14px; margin: 5px 0px;}
+.idol_m_txt {line-height: 25px; font-size: 16px; height: 50px; padding: 25px 5px;}
+.idol_attract {font-size: 16px; font-weight: bold; color: white; margin: 0px 0px 10px 0px}

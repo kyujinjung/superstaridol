@@ -1,0 +1,2 @@
+# superstaridol
+Idol Project

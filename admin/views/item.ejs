@@ -1,0 +1,136 @@
+<%- include('./layouts/header') %>
+
+<script>
+    function showItemForm(){
+        $("div#bk_bg").show();
+        $("div#form_item").show();
+    }
+
+    function shutItemForm(){
+        $("div#bk_bg").hide();
+        $("div#form_item").hide();
+    }
+
+    function goItemForm(){
+
+        // form to json
+        var formData= $('form[name=form_item]').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        // submit data
+        $.ajax({
+        url: "/item",
+        type: "POST",
+        dataType: "json",
+        data: json,
+        contentType: "application/json; charset=UTF-8",
+        complete: function(xhr, textStatus) {
+
+            console.log(xhr.responseText);
+
+	        if(xhr.responseText == "Insert Item Successfully"){
+                alert('아이템이 생성되었습니다');
+                location.reload();
+            }
+
+        }
+    });
+
+
+
+    }
+</script>
+
+<div id="bk_bg" class="bk_bg" onclick="shutItemForm()"></div>
+
+<div class="create_w" id="form_item">
+
+    <form name="form_item">
+        <div class="create_t">
+            <div class="create_t_t">아이템 생성</div>
+            <div class="create_t_bt" onclick="shutItemForm()">닫기</div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="create_txt">아이템 이름</div>
+        <input type="text" name="name" class="ipt_create_txt" placeholder="이름 입력" />
+
+        <div class="create_txt">아이템 타입</div>
+        <select name="type" class="ipt_create_txt">
+<% typeList.forEach(is => { %>
+            <option value="<%= is.num%>"><%= is.name %></option>
+<% }); %>         
+        </select>        
+
+        <div class="create_txt">개방 레벨</div>
+        <input type="number" name="req_level" class="ipt_create_txt" />
+
+        <div class="create_txt">개방 비용</div>
+        <input type="number" name="req_ruby" class="ipt_create_txt" />
+
+        <div class="create_txt">보상 매력</div>
+        <input type="number" name="reward_attract" class="ipt_create_txt" />
+
+        <!-- <div class="create_txt">이미지 선택</div>
+        <input type="file" name="photo" /> -->
+
+        <div class="create_b">
+            <div class="create_b_bt_s" onclick="goItemForm()">등록</div>
+            <div class="create_b_bt" onclick="shutItemForm()">취소</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+</div>
+
+<div class="cont_w">
+	<div class="cont_t">아이템 관리</div>
+	<div class="clear"></div>
+
+
+    <div class="cont_search">
+        <div class="search_compo">
+            <input type="text" class="ipt_type_1" placeholder="검색어를 입력하세요." />
+            <div class="bt_lef_type_1">검색</div>
+            <div class="clear"></div>
+        </div>
+        <div class="bt_rig_type_1" onclick="showItemForm()">아이템 생성</div>
+        <div class="clear"></div>
+    </div>
+
+	<div class="bbs_t">
+		<div class="td5">No</div>
+		<div class="td15">이름</div>
+		<div class="td10">개방레벨</div>
+        <div class="td10">개방루비</div>
+        <div class="td10">매력보상</div>
+        <div class="td10">사진</div>
+		<div class="td5">수정</div>
+        <div class="td5">삭제</div>
+		<div class="clear"></div>
+	</div>
+
+<% list.forEach(ls => { %>
+    <div class="bbs_c">
+		<div class="td5"><%= ls.num %></div>
+		<div class="td15"><%= ls.name %></div>
+        <div class="td10"><%= ls.req_level %></div>
+        <div class="td10"><%= ls.req_ruby %></div>
+        <div class="td10"><%= ls.reward_attract %></div>
+        <div class="td10"><%= ls.photo %></div>
+		<div class="td5">수정</div>
+        <div class="td5">삭제</div>		
+        <div class="clear"></div>
+	</div>
+<% }); %>
+
+</div>
+
+
+
+<%- include('./layouts/footer', {now_loc : now_loc}) %>

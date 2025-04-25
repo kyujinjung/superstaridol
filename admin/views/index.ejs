@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="P2" />
+<meta name="keywords"  content="P2" />
+<meta name="author" content="P2" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" media="" href="/css/style.css" />
+
+<title>P2 :: Administrator</title>
+</head>
+
+
+<body>
+
+        
+
+    <div class="login_w">
+        <div class="login_title">P2 Administrator</div>
+        <form name="form_login" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" class="ipt_login" autocomplete="off" /><br />
+            <input type="password" name="password" class="ipt_login" autocomplete="off" />
+        </form>
+        <div class="bt_login" onclick="goUserLogin()">로그인</div>
+
+        <!-- <div class="bt_login" onclick="location.href='https://elio-stage.ailey.link/login?client_id=8d74eef0-a305-4ea2-956e-7c7958bdb556&redirect_uri=http://58.237.149.122:8001/api/login&response_type=code'">API 로그인</div> -->
+
+        <!-- <div class="bt_login" onclick="location.href='https://elio-stage.ailey.link/login?client_id=8d74eef0-a305-4ea2-956e-7c7958bdb556&redirect_uri=https://www.forecodes.com/p2/api?response_type=code'">API 로그인</div> -->
+
+    </div>    
+
+
+<script>
+    function goUserLogin(){
+
+        if(!document.form_login.id.value){
+            alert('아이디를 입력하세요');
+            return;
+        }
+
+        if(!document.form_login.password.value){
+            alert('패스워드를 입력하세요');
+            return;
+        }
+
+        
+        // form to json
+        var formData= $('form[name=form_login]').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        // submit data
+        $.ajax({
+            url: "/login",
+            type: "POST",
+            dataType: "json",
+            data: json,
+            contentType: "application/json; charset=UTF-8",
+            complete: function(xhr, textStatus) {
+
+                //console.log(xhr.responseText);
+                if(xhr.responseText == "success"){
+                    location.href='/user';
+                }
+                else{
+                    alert('로그인에 문제가 있습니다.');
+                }
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

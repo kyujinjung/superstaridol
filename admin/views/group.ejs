@@ -1,0 +1,114 @@
+<%- include('./layouts/header') %>
+
+<script>
+    function showGroupForm(){
+        $("div#bk_bg").show();
+        $("div#form_group").show();
+    }
+
+    function shutGroupForm(){
+        $("div#bk_bg").hide();
+        $("div#form_group").hide();
+    }
+
+    function goGroupForm(){
+
+        // form to json
+        var formData= $('form[name=form_group]').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        // submit data
+        $.ajax({
+        url: "/group",
+        type: "POST",
+        dataType: "json",
+        data: json,
+        contentType: "application/json; charset=UTF-8",
+        complete: function(xhr, textStatus) {
+
+	        if(xhr.responseText == "Insert Group Successfully"){
+                alert('아이돌그룹이 생성되었습니다');
+                location.reload();
+            }
+
+        }
+    });
+
+
+
+    }
+</script>
+
+<div id="bk_bg" class="bk_bg" onclick="shutGroupForm()"></div>
+
+<div class="create_w" id="form_group">
+
+    <form name="form_group">
+        <div class="create_t">
+            <div class="create_t_t">아이돌 그룹 생성</div>
+            <div class="create_t_bt" onclick="shutGroupForm()">닫기</div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="create_txt">그룹 이름</div>
+        <input type="text" name="name" class="ipt_create_txt" placeholder="이름 입력" />
+
+        <div class="create_b">
+            <div class="create_b_bt_s" onclick="goGroupForm()">등록</div>
+            <div class="create_b_bt" onclick="shutGroupForm()">취소</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+</div>
+
+<div class="cont_w">
+	<div class="cont_t">그룹 관리</div>
+	<div class="clear"></div>
+
+
+    <div class="cont_search">
+        <div class="search_compo">
+            <input type="text" class="ipt_type_1" placeholder="검색어   를 입력하세요." />
+            <div class="bt_lef_type_1" onclick="alert('준비중입니다.')">검색</div>
+            <div class="clear"></div>
+        </div>
+        <!-- <div class="bt_rig_type_1" onclick="showGroupForm()">아이돌그룹 생성</div> -->
+        <div class="clear"></div>
+    </div>
+
+
+	<div class="bbs_t">
+		<div class="td5">No</div>
+		<div class="td15">그룹이름</div>
+		<div class="td15">그룹생성자</div>
+        <div class="td15">그룹생성일</div>
+		<div class="td15">소속멤버</div>
+		<div class="td15">최근 업데이트</div>
+		<div class="td5">보기</div>
+		<div class="clear"></div>
+	</div>
+
+<% list.forEach(ls => { %>
+    <div class="bbs_c">
+		<div class="td5"><%= ls.num %></div>
+		<div class="td15"><%= ls.name %></div>
+        <div class="td15"><%= ls.uploader_name %></div>
+		<div class="td15"><%= ls.createdAt %></div>
+        <div class="td15"><%= ls.member %>&nbsp;</div>
+        <div class="td15"><%= ls.updatedAt %>&nbsp;</div>
+		<div class="td5">보기</div>
+		<div class="clear"></div>
+	</div>
+<% }); %>
+
+</div>
+
+
+
+<%- include('./layouts/footer') %>

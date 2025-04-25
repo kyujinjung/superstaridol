@@ -1,0 +1,17 @@
+<%- include('./layouts/header') %>
+
+    <h1>HI LIST</h1>
+    <h2><%= heading %></h2>
+
+    <ul>
+        <% list.forEach(ls => { %>
+
+        <li>
+            <%= ls.name %>
+        </li>
+        
+        
+        <% }); %>
+    </ul>
+
+<%- include('./layouts/footer') %>

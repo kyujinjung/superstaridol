@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Brand zip" />
+<meta name="keywords"  content="Brand zip" />
+<meta name="author" content="Brand zip" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- 호환성 버튼 없애는 코드 -->
+<meta http-equiv="Page-exit" content="BlendTrans(Duration=0.3)">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="" href="/css/style.css" />
+
+<title>Admin</title>
+</head>
+
+
+<body>
+
+<div class="header">
+	<div class="header_logo">관리자</div>
+	<div class="header_bt" onclick="location.href='/'">로그아웃</div>
+	<div class="clear"></div>
+</div>
+
+<div class="sidebar">
+
+	<div class="sidebar_t">콘텐츠 관리</div>
+	<div class="sidebar_m<%= now_loc=='user'?'_s':''%>"><a href="/user">회원 관리</a></div>
+    <div class="sidebar_m<%= now_loc=='group'?'_s':''%>"><a href="/group">그룹관리</a></div>
+    <div class="sidebar_m<%= now_loc=='idol'?'_s':''%>"><a href="/idol">아이돌 관리</a></div>
+    <div class="sidebar_m<%= now_loc=='manager'?'_s':''%>"><a href="/manager">매니저 관리</a></div>
+    <div class="sidebar_m<%= now_loc=='producer'?'_s':''%>"><a href="/producer">프로듀서 관리</a></div>
+    <div class="sidebar_m<%= now_loc=='npc'?'_s':''%>"><a href="/npc">NPC 캐릭터</a></div>
+    <div class="sidebar_m<%= now_loc=='schedule'?'_s':''%>"><a href="/schedule">스케줄 관리</a></div>
+    <div class="sidebar_m<%= now_loc=='item'?'_s':''%>"><a href="/item">아이템 관리</a></div>
+    <div class="sidebar_m<%= now_loc=='mission'?'_s':''%>"><a href="/mission">미션 관리</a></div>
+
+	<div class="sidebar_t">시스템 관리</div>
+    <div class="sidebar_m"><a href="/admin">관리자 계정 관리</a></div>
+
+
+</div><!--sidebar END-->
+<div class="rarea">

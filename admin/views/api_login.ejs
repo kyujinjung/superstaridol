@@ -1,0 +1,33 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const apiCode = urlParams.get('code');
+
+
+
+    let tokenData = {
+        client_id: "8d74eef0-a305-4ea2-956e-7c7958bdb556",
+        client_secret: "ed6966de-c0c9-48dc-99e7-376a552b0072",
+        grant_type: "authorization_code",
+        code: apiCode
+    };
+
+    console.log(tokenData);
+
+    $.ajax({
+        url: "https://elio-stage.ailey.link/api/public/oauth/token",
+        type: "POST",
+        dataType: "json",
+        data: tokenData,
+        contentType: "application/json; charset=UTF-8",
+        complete: function(xhr, textStatus) {
+	        console.log(xhr.responseText);
+        }
+    });
+    
+
+    //location.href='/user';
+
+</script>

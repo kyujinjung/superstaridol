@@ -6,7 +6,7 @@ const getMailList = asyncHandler(async(req, res) => {
 
     try {
         conn.query("select * from schedule where isActive = 0 ", (req,resdb) => {
-            res.render("schedule", {heading : "LIST", list : resdb, now_loc : "mail" });
+            res.render("mail", {heading : "LIST", list : resdb, now_loc : "mail" });
         })
     }
     catch(error){

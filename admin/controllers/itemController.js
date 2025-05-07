@@ -19,15 +19,42 @@ const getItemList = asyncHandler(async(req, res) => {
 const createItem = asyncHandler(async(req, res) => {
 
     console.log(req.body);
-    const {name, type, req_level, req_ruby, reward_attract} = req.body;
+    const {name, req_jenny, type, req_level, extra_popular, extra_attract, reward_jenny, reward_ruby, photo, description} = req.body;
     
     // 인서트하고
-    conn.query(`insert into item (name, type, req_level, req_ruby, reward_attract) values (
+    conn.query(`name, req_jenny, type, req_level, extra_popular, extra_attract, reward_jenny, reward_ruby, photo, description) values (
         
-        '${name}', '${type}', '${req_level}', '${req_ruby}','${reward_attract}'
+        '${name}', '${req_jenny}', '${type}', '${req_level}', '${extra_popular}', '${extra_attract}', '${reward_jenny}', '${reward_ruby}', '${photo}', '${description}'
+        
     )`);
     res.status(201).send("Insert Item Successfully");
 
 })
 
-module.exports = {getItemList, createItem};
+
+const updateItem = asyncHandler(async(req, res) => {
+
+    console.log(req.body);
+    const {num, name, req_jenny, type, req_level, extra_popular, extra_attract, reward_jenny, reward_ruby, photo, description} = req.body;
+
+    console.log(num);
+    
+    // 인서트하고
+    conn.query(`update item set  name = '${name}', req_jenny = '${req_jenny}', type = '${type}', req_level = '${req_level}', extra_popular = '${extra_popular}', extra_attract = '${extra_attract}', reward_jenny = '${reward_jenny}', reward_ruby = '${reward_ruby}', photo = '${photo}', description = '${description}' where num = ${num}`);
+    res.status(201).send("update Item Successfully");
+
+})
+
+const deleteItem = asyncHandler(async(req, res) => {
+
+    const {num} = req.body;
+
+    console.log(num);
+
+    // 인서트하고
+    conn.query(`update item set isActive = 1 where num = '${num}'`);
+    res.status(201).send("delete Item Successfully");
+
+})
+
+module.exports = {getItemList, createItem, updateItem, deleteItem};

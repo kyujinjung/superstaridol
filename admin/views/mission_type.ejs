@@ -1,0 +1,173 @@
+<%- include('./layouts/header') %>
+
+<script>
+    function showMissionTypeForm(){
+        $("div#bk_bg").show();
+        $("div#form_mission_type").show();
+    }
+
+    function shutMissionTypeForm(){
+        $("div#bk_bg").hide();
+        $("div#form_mission_type").hide();
+    }
+
+    function goMissionTypeForm(){
+
+        // form to json
+        var formData= $('form[name=form_mission_type]').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        // submit data
+        $.ajax({
+        url: "/mission_type",
+        type: "POST",
+        dataType: "json",
+        data: json,
+        contentType: "application/json; charset=UTF-8",
+        complete: function(xhr, textStatus) {
+
+            console.log(xhr.responseText);
+
+	        if(xhr.responseText == "Insert Mission Type Successfully"){
+                alert('미션유형이 생성되었습니다');
+                location.reload();
+            }
+
+        }
+    });
+
+
+
+    }
+
+    function modifyMissionTypeForm(mission){
+
+        var formData= $('form[name=form_mission_type_'+mission+']').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        console.log(json);
+
+        $.ajax({
+            url: "/mission_type",
+            type: "PUT",
+            dataType: "json",
+            data: json,
+            contentType: "application/json; charset=UTF-8",
+            complete: function(xhr, textStatus) {
+                console.log(xhr.responseText);
+                if(xhr.responseText == "update Mission Type Successfully"){
+                    alert('미션유형이 수정되었습니다');
+                    location.reload();
+                }
+
+            }
+        });
+    }
+
+    function deleteMissionType(mission){
+
+        var formData= $('form[name=form_mission_type_'+mission+']').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        var conque = confirm("삭제하시겠습니까?");
+        if(conque == false){
+            return;
+        }
+        else{
+            $.ajax({
+                url: "/mission_type",
+                type: "DELETE",
+                dataType: "json",
+                data: json,
+                contentType: "application/json; charset=UTF-8",
+                complete: function(xhr, textStatus) {
+                    console.log(xhr.responseText);
+                    if(xhr.responseText == "delete Mission Type Successfully"){
+                        alert('미션 유형형이 삭제되었습니다');
+                        location.reload();
+                    }
+
+                }
+            });
+        }
+    }
+</script>
+
+<div id="bk_bg" class="bk_bg" onclick="shutMissionTypeForm()"></div>
+
+<div class="create_w" id="form_mission_type">
+
+    <form name="form_schedule">
+        <div class="create_t">
+            <div class="create_t_t">미션 생성</div>
+            <div class="create_t_bt" onclick="shutMissionTypeForm()">닫기</div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+        <div class="create_txt">미션 유형 이름</div>
+        <input type="text" name="name" class="ipt_create_txt" placeholder="미션 유형 입력" />
+
+        <div class="create_b">
+            <div class="create_b_bt_s" onclick="goMissionTypeForm()">등록</div>
+            <div class="create_b_bt" onclick="shutMissionTypeForm()">취소</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+</div>
+
+<div class="cont_w">
+	<div class="cont_t">미션 유형 관리</div>
+	<div class="clear"></div>
+
+
+    <div class="cont_search">
+        <div class="search_compo">
+            <input type="text" class="ipt_type_1" placeholder="검색어를 입력하세요." />
+            <div class="bt_lef_type_1">검색</div>
+            <div class="clear"></div>
+        </div>
+        <div class="bt_rig_type_1" onclick="showMissionTypeForm()">미션 유형 생성</div>
+        <div class="clear"></div>
+    </div>
+
+
+	<div class="bbs_t">
+		<div class="td5">No</div>
+		<div class="td20">이름</div>
+        <div class="td5">수정</div>
+        <div class="td5">삭제</div>
+		<div class="clear"></div>
+	</div>
+
+<% list.forEach(ls => { %>
+    <div class="bbs_c">
+        <form name="form_mission_type_<%=ls.num%>" method="post" id="form_mission_type_<%=ls.num%>">
+            <input type="hidden" name="num" value="<%=ls.num%>" />
+            <div class="td5"><%= ls.num %></div>
+            <div class="td20"><input type="text" name="name" class="bbs_ipt" value="<%= ls.name %>" /></div>
+            <div class="td5"onclick="modifyMissionTypeForm(<%=ls.num%>)">수정</div>
+            <div class="td5"onclick="deleteMissionType(<%=ls.num%>)">삭제</div>
+            <div class="clear"></div>
+        </form>
+	</div>
+<% }); %>
+
+</div>
+
+
+
+<%- include('./layouts/footer', {now_loc : now_loc}) %>

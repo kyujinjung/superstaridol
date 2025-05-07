@@ -1,0 +1,175 @@
+<%- include('./layouts/header') %>
+
+<script>
+    function showExpForm(){
+        $("div#bk_bg").show();
+        $("div#form_exp").show();
+    }
+
+    function shutExpForm(){
+        $("div#bk_bg").hide();
+        $("div#form_exp").hide();
+    }
+
+    function goExpForm(){
+
+        // form to json
+        var formData= $('form[name=form_exp]').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        // submit data
+        $.ajax({
+        url: "/Exp",
+        type: "POST",
+        dataType: "json",
+        data: json,
+        contentType: "application/json; charset=UTF-8",
+        complete: function(xhr, textStatus) {
+
+            console.log(xhr.responseText);
+
+	        if(xhr.responseText == "Insert Exp Successfully"){
+                alert('EXP이 생성되었습니다');
+                location.reload();
+            }
+
+        }
+    });
+
+
+
+    }
+
+    function modifyExpForm(exp){
+
+        var formData= $('form[name=form_exp_'+exp+']').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        console.log(json);
+
+        $.ajax({
+            url: "/exp",
+            type: "PUT",
+            dataType: "json",
+            data: json,
+            contentType: "application/json; charset=UTF-8",
+            complete: function(xhr, textStatus) {
+                console.log(xhr.responseText);
+                if(xhr.responseText == "update Exp Successfully"){
+                    alert('EXP가 수정되었습니다');
+                    location.reload();
+                }
+
+            }
+        });
+    }
+
+    function deleteExp(exp){
+
+        var formData= $('form[name=form_exp_'+exp+']').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        var conque = confirm("삭제하시겠습니까?");
+        if(conque == false){
+            return;
+        }
+        else{
+            $.ajax({
+                url: "/exp",
+                type: "DELETE",
+                dataType: "json",
+                data: json,
+                contentType: "application/json; charset=UTF-8",
+                complete: function(xhr, textStatus) {
+                    console.log(xhr.responseText);
+                    if(xhr.responseText == "delete Exp Successfully"){
+                        alert('EXP가 삭제되었습니다');
+                        location.reload();
+                    }
+
+                }
+            });
+        }
+    }
+</script>
+
+<div id="bk_bg" class="bk_bg" onclick="shutExpForm()"></div>
+
+<div class="create_w" id="form_exp">
+
+    <form name="form_exp">
+        <div class="create_t">
+            <div class="create_t_t">EXP 생성</div>
+            <div class="create_t_bt" onclick="shutExpForm()">닫기</div>
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="create_txt">Level</div>
+        <input type="number" name="level" class="ipt_create_txt" />
+
+        <div class="create_txt">Exp</div>
+        <input type="number" name="exp" class="ipt_create_txt" />
+
+
+        <div class="create_b">
+            <div class="create_b_bt_s" onclick="goExpForm()">등록</div>
+            <div class="create_b_bt" onclick="shutExpForm()">취소</div>
+            <div class="clear"></div>
+        </div>
+
+    </form>
+</div>
+
+<div class="cont_w">
+	<div class="cont_t">EXP 관리</div>
+	<div class="clear"></div>
+
+
+    <div class="cont_search">
+        <div class="bt_rig_type_1" onclick="showExpForm()">EXP 생성</div>
+        <div class="clear"></div>
+    </div>
+
+
+	<div class="bbs_t">
+		<div class="td5">No</div>
+		<div class="td10">Level</div>
+        <div class="td10">Exp</div>
+        <div class="td5">수정</div>
+        <div class="td5">삭제</div>
+		<div class="clear"></div>
+	</div>
+
+<% list.forEach(ls => { %>
+    <div class="bbs_c">
+        <form name="form_exp_<%=ls.num%>" method="post" id="form_exp_<%=ls.num%>">
+            <input type="hidden" name="num" value="<%=ls.num%>" />
+            <div class="td5"><%= ls.num %></div>
+            <div class="td10"><input type="number" name="level" class="bbs_ipt" value="<%= ls.level %>" /></div>
+            <div class="td10"><input type="number" name="exp" class="bbs_ipt" value="<%= ls.exp %>" /></div>
+            <div class="td5"onclick="modifyExpForm(<%=ls.num%>)">수정</div>
+            <div class="td5"onclick="deleteExp(<%=ls.num%>)">삭제</div>
+            <div class="clear"></div>
+        </form>
+	</div>
+<% }); %>
+
+</div>
+
+
+
+
+
+<%- include('./layouts/footer', {now_loc : now_loc}) %>

@@ -43,6 +43,66 @@
 
 
     }
+
+    function modifyItemForm(item){
+
+        var formData= $('form[name=form_item_'+item+']').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        console.log(json);
+
+        $.ajax({
+            url: "/item",
+            type: "PUT",
+            dataType: "json",
+            data: json,
+            contentType: "application/json; charset=UTF-8",
+            complete: function(xhr, textStatus) {
+                console.log(xhr.responseText);
+                if(xhr.responseText == "update Item Successfully"){
+                    alert('아이템이 수정되었습니다');
+                    location.reload();
+                }
+
+            }
+        });
+    }
+
+    function deleteItem(item){
+
+        var formData= $('form[name=form_item_'+item+']').serializeArray();
+        var object = {};
+        for (var i = 0; i <formData.length; i++){
+            object[formData[i]['name']] =formData[i]['value'];
+        }
+        var json = JSON.stringify(object);
+
+        var conque = confirm("삭제하시겠습니까?");
+        if(conque == false){
+            return;
+        }
+        else{
+            $.ajax({
+                url: "/item",
+                type: "DELETE",
+                dataType: "json",
+                data: json,
+                contentType: "application/json; charset=UTF-8",
+                complete: function(xhr, textStatus) {
+                    console.log(xhr.responseText);
+                    if(xhr.responseText == "delete Item Successfully"){
+                        alert('아이템이 삭제되었습니다');
+                        location.reload();
+                    }
+
+                }
+            });
+        }
+    }
 </script>
 
 <div id="bk_bg" class="bk_bg" onclick="shutItemForm()"></div>
@@ -67,17 +127,29 @@
 <% }); %>         
         </select>        
 
+        <div class="create_txt">개방 제니</div>
+        <input type="number" name="req_jenny" class="ipt_create_txt" />
+
         <div class="create_txt">개방 레벨</div>
         <input type="number" name="req_level" class="ipt_create_txt" />
 
-        <div class="create_txt">개방 비용</div>
-        <input type="number" name="req_ruby" class="ipt_create_txt" />
+        <div class="create_txt">추가 인기</div>
+        <input type="number" name="extra_popular" class="ipt_create_txt" />
 
-        <div class="create_txt">보상 매력</div>
-        <input type="number" name="reward_attract" class="ipt_create_txt" />
+        <div class="create_txt">추가 매력</div>
+        <input type="number" name="extra_attract" class="ipt_create_txt" />
 
-        <!-- <div class="create_txt">이미지 선택</div>
-        <input type="file" name="photo" /> -->
+        <div class="create_txt">보상 제니</div>
+        <input type="number" name="reward_jenny" class="ipt_create_txt" />
+
+        <div class="create_txt">보상 루비</div>
+        <input type="number" name="reward_ruby" class="ipt_create_txt" />
+
+        <div class="create_txt">사진</div>
+        <input type="number" name="photo" class="ipt_create_txt" />
+
+        <div class="create_txt">설명</div>
+        <input type="number" name="description" class="ipt_create_txt" />>
 
         <div class="create_b">
             <div class="create_b_bt_s" onclick="goItemForm()">등록</div>
@@ -105,11 +177,16 @@
 
 	<div class="bbs_t">
 		<div class="td5">No</div>
-		<div class="td15">이름</div>
-		<div class="td10">개방레벨</div>
-        <div class="td10">개방루비</div>
-        <div class="td10">매력보상</div>
-        <div class="td10">사진</div>
+		<div class="td20">이름</div>
+		<div class="td5">요구제니</div>
+        <div class="td5">타입</div>
+        <div class="td5">요구레벨</div>
+        <div class="td5">추가인기</div>
+        <div class="td5">추가매력</div>
+        <div class="td5">보상제니</div>
+        <div class="td5">보상루비</div>
+        <div class="td15">사진</div>
+        <div class="td15">설명</div>
 		<div class="td5">수정</div>
         <div class="td5">삭제</div>
 		<div class="clear"></div>
@@ -117,16 +194,24 @@
 
 <% list.forEach(ls => { %>
     <div class="bbs_c">
-		<div class="td5"><%= ls.num %></div>
-		<div class="td15"><%= ls.name %></div>
-        <div class="td10"><%= ls.req_level %></div>
-        <div class="td10"><%= ls.req_ruby %></div>
-        <div class="td10"><%= ls.reward_attract %></div>
-        <div class="td10"><%= ls.photo %></div>
-		<div class="td5">수정</div>
-        <div class="td5">삭제</div>		
-        <div class="clear"></div>
-	</div>
+        <form name="form_item_<%=ls.num%>" method="post" id="form_item_<%=ls.num%>">
+            <input type="hidden" name="num" value="<%=ls.num%>" />
+            <div class="td5"><%= ls.num %></div>
+            <div class="td20"><input type="text" name="name" class="bbs_ipt" value="<%= ls.name %>" /></div>
+            <div class="td5"><input type="number" name="req_jenny" class="bbs_ipt" value="<%= ls.req_jenny %>" /></div>
+            <div class="td5"><input type="number" name="type" class="bbs_ipt" value="<%= ls.type %>" /></div>
+            <div class="td5"><input type="number" name="req_level" class="bbs_ipt" value="<%= ls.req_level %>" /></div>
+            <div class="td5"><input type="number" name="extra_popular" class="bbs_ipt" value="<%= ls.extra_popular %>" /></div>
+            <div class="td5"><input type="number" name="extra_attract" class="bbs_ipt" value="<%= ls.extra_attract %>" /></div>
+            <div class="td5"><input type="number" name="reward_jenny" class="bbs_ipt" value="<%= ls.reward_jenny %>" /></div>
+            <div class="td5"><input type="number" name="reward_ruby" class="bbs_ipt" value="<%= ls.reward_ruby %>" /></div>
+            <div class="td15"><input type="text" name="photo" class="bbs_ipt" value="<%= ls.photo %>" /></div>
+            <div class="td15"><input type="text" name="description" class="bbs_ipt" value="<%= ls.description %>" /></div>
+            <div class="td5 i_cus" onclick="modifyItemForm(<%=ls.num%>)">수정</div>
+            <div class="td5 i_cus" onclick="deleteItem(<%=ls.num%>)">삭제</div>
+            <div class="clear"></div>
+        </form>
+    </div>
 <% }); %>
 
 </div>

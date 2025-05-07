@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {getAllList, createContents} = require("../controllers/sampleController");
 const {getMissionList, createMission, updateMission, deleteMission} = require("../controllers/missionController");
+const {getMissionTypeList, createMissionType, updateMissionType, deleteMissionType} = require("../controllers/missiontypeController");
+const {getExpList, createExp, updateExp, deleteExp} = require("../controllers/expController");
 const {getUserList, createUser} = require("../controllers/userController");
 const {getManagerList,getProducerList} = require("../controllers/managerController");
 const {getGroupList, createGroup} = require("../controllers/groupController");
@@ -9,10 +11,10 @@ const {getAdminList, createAdmin} = require("../controllers/adminController");
 const {getNpcList, createNpc, updateNpc, deleteNpc} = require("../controllers/npcController");
 const {getIdolList} = require("../controllers/idolController");
 const {getScheduleList, createSchedule, updateSchedule, deleteSchedule} = require("../controllers/scheduleController");
-const {getMailList, createMail} = require("../controllers/mailController");
-const {getItemList, createItem} = require("../controllers/itemController");
+const {getItemList, createItem, updateItem, deleteItem} = require("../controllers/itemController");
 const {chkUserLogin} = require("../controllers/loginController");
 const {getTokenAiley} = require("../controllers/apiController");
+const {getCsvList, createCsv} = require("../controllers/csvController");
 
 
 router.route("/contacts")
@@ -37,6 +39,10 @@ router
 router.route("/user")
 .get(getUserList)
 .post(createUser);
+
+router.route("/csv")
+.get(getCsvList)
+.post(createCsv);
 
 router.route("/manager")
 .get(getManagerList)
@@ -69,9 +75,25 @@ router.route("/mission")
 .delete(deleteMission)
 .post(createMission);
 
+
+router.route("/mission_type")
+.get(getMissionTypeList)
+.put(updateMissionType)
+.delete(deleteMissionType)
+.post(createMissionType);
+
+router.route("/exp")
+.get(getExpList)
+.put(updateExp)
+.delete(deleteExp)
+.post(createExp);
+
+
 router.route("/item")
 .get(getItemList)
-.post(createItem);
+.post(createItem)
+.put(updateItem)
+.delete(deleteItem);
 
 router.route("/api/login")
 .get(getTokenAiley);
@@ -83,8 +105,5 @@ router.route("/admin")
 router.route("/login")
 .post(chkUserLogin);
 
-router.route("/mail")
-.get(getMailList)
-.post(createMail);
 
 module.exports = router;

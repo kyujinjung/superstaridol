@@ -6,6 +6,7 @@ const {getMissionTypeList, createMissionType, updateMissionType, deleteMissionTy
 const {getExpList, createExp, updateExp, deleteExp} = require("../controllers/expController");
 const {getUserList, createUser} = require("../controllers/userController");
 const {getManagerList,getProducerList} = require("../controllers/managerController");
+const {getMailList, createMail, deleteMail} = require("../controllers/mailController");
 const {getGroupList, createGroup} = require("../controllers/groupController");
 const {getAdminList, createAdmin} = require("../controllers/adminController");
 const {getNpcList, createNpc, updateNpc, deleteNpc} = require("../controllers/npcController");
@@ -46,6 +47,11 @@ router.route("/csv")
 
 router.route("/manager")
 .get(getManagerList)
+
+router.route("/mail")
+.get(getMailList)
+.delete(deleteMail)
+.post(createMail);
 
 router.route("/producer")
 .get(getProducerList)

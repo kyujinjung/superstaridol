@@ -1,0 +1,15 @@
+<%- include('./layouts/header') %>
+
+<div class="cont_w">
+	<div class="cont_t">엑셀파일 인서트</div>
+	<div class="clear"></div>
+
+      <form action="/csv" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".xlsx, .xls" required>
+        <button type="submit">XLSX 파일 업로드</button>
+    </form>
+</div>
+
+
+
+<%- include('./layouts/footer', {now_loc : now_loc}) %>

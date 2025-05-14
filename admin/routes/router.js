@@ -12,7 +12,6 @@ const {getMissionTypeList, createMissionType, updateMissionType, deleteMissionTy
 const {getExpList, createExp, updateExp, deleteExp} = require("../controllers/expController");
 const {getUserList, createUser} = require("../controllers/userController");
 const {getManagerList,getProducerList} = require("../controllers/managerController");
-const {getMailList, createMail, deleteMail} = require("../controllers/mailController");
 const {getGroupList, createGroup} = require("../controllers/groupController");
 const {getAdminList, createAdmin} = require("../controllers/adminController");
 const {getNpcList, createNpc, updateNpc, deleteNpc} = require("../controllers/npcController");
@@ -55,9 +54,9 @@ router.route('/csv')
     const rows_2 = XLSX.utils.sheet_to_json(schedule);
 
     for (const row of rows_2) {
-        const {id, name, req_level, req_time, reward_exp, reward_popular, reward_attract, reward_jenny} = row;
+        const {id, name, unlock_level, duration, reward_exp, reward_popular, reward_charm, reward_jenny} = row;
         conn.query(`update schedule set 
-            name = '${name}', req_level = '${req_level}', req_time = '${req_time}' , reward_exp = '${reward_exp}' , reward_popular = '${reward_popular}' , reward_attract = '${reward_attract}' , reward_jenny = '${reward_jenny}' 
+            name = '${name}', req_level = '${unlock_level}', req_time = '${duration}' , reward_exp = '${reward_exp}' , reward_popular = '${reward_popular}' , reward_attract = '${reward_charm}' , reward_jenny = '${reward_jenny}' 
             where num = ${id}`);
     }
 
@@ -67,11 +66,11 @@ router.route('/csv')
     const rows_3 = XLSX.utils.sheet_to_json(npc);
 
     for (const row of rows_3) {
-        const {id, name, type , ruby, popular, attractive, photo} = row;
+        const {id, name, type , ruby, add_popular, add_charm, img} = row;
 
         console.log(row);
         conn.query(`update npc set 
-            name = '${name}', type = '${type}', ruby = '${ruby}' , popular = '${popular}' , attractive = '${attractive}' , photo = '${photo}'
+            name = '${name}', type = '${type}', ruby = '${ruby}' , popular = '${add_popular}' , attractive = '${add_charm}' , photo = '${img}'
             where num = ${id}`);
     }
 
@@ -80,11 +79,12 @@ router.route('/csv')
     const rows_4 = XLSX.utils.sheet_to_json(item);
 
     for (const row of rows_4) {
-        const {id, name, req_jenny, req_level, extra_popular, extra_attract, reward_jenny, reward_ruby, photo, description} = row;
+        const {id, name, type, jenny, level, add_popular, add_charm, reward_jenny, reward_ruby, img, desc} = row;
 
         const sql = `
         UPDATE item SET 
             name = ?, 
+            type = ?,
             req_jenny = ?, 
             req_level = ?, 
             extra_popular = ?, 
@@ -98,14 +98,15 @@ router.route('/csv')
 
         const values = [
         name,
-        req_jenny,
-        req_level,
-        extra_popular,
-        extra_attract,
+        type,
+        jenny,
+        level,
+        add_popular,
+        add_charm,
         reward_jenny,
         reward_ruby,
-        photo,
-        description,
+        img,
+        desc,
         id
         ];
 
@@ -124,7 +125,7 @@ router.route('/csv')
     const rows_5 = XLSX.utils.sheet_to_json(mission);
 
     for (const row of rows_5) {
-        const {id, name, req_level, max_level, type, req_rep, reward_exp, reward_popular, reward_attract, reward_jenny, reward_ruby, photo} = row;
+        const {id, name, min_level, max_level, type, value, reward_exp, add_popular, add_charm, reward_jenny, reward_ruby, img} = row;
 
         const sql = `
         UPDATE mission SET 
@@ -142,7 +143,7 @@ router.route('/csv')
         WHERE num = ?
         `;
 
-        const values = [name, req_level, max_level, type, req_rep, reward_exp, reward_popular, reward_attract, reward_jenny, reward_ruby, photo, id];
+        const values = [name, min_level, max_level, type, value, reward_exp, add_popular, add_charm, reward_jenny, reward_ruby, img, id];
 
         conn.query(sql, values, (err, results) => {
         if (err) {
@@ -208,11 +209,6 @@ router.route("/user")
 
 router.route("/manager")
 .get(getManagerList)
-
-router.route("/mail")
-.get(getMailList)
-.delete(deleteMail)
-.post(createMail);
 
 router.route("/producer")
 .get(getProducerList)

@@ -18,36 +18,36 @@
 <body>
 
 <div class="header">
-	<div class="header_logo">관리자</div>
-	<div class="header_bt" onclick="location.href='/'">로그아웃</div>
+	<div class="header_logo">Admin</div>
+	<div class="header_bt" onclick="location.href='/'">Logout</div>
 	<div class="clear"></div>
 </div>
 
 <div class="sidebar">
 
-	<div class="sidebar_t">콘텐츠 관리</div>
-	<div class="sidebar_m<%= now_loc=='user'?'_s':''%>"><a href="/user">회원 관리</a></div>
-    <div class="sidebar_m<%= now_loc=='group'?'_s':''%>"><a href="/group">그룹관리</a></div>
-    <div class="sidebar_m<%= now_loc=='idol'?'_s':''%>"><a href="/idol">아이돌 관리</a></div>
-    <div class="sidebar_m<%= now_loc=='manager'?'_s':''%>"><a href="/manager">매니저 관리</a></div>
-    <div class="sidebar_m<%= now_loc=='producer'?'_s':''%>"><a href="/producer">프로듀서 관리</a></div>
-    <div class="sidebar_m<%= now_loc=='mail'?'_s':''%>"><a href="/mail">메일 관리</a></div>
+	<div class="sidebar_t">Content Management</div>
+	<div class="sidebar_m<%= now_loc=='user'?'_s':''%>"><a href="/user" title="회원 정보">Member Management</a></div>
+    <div class="sidebar_m<%= now_loc=='group'?'_s':''%>"><a href="/group" title="그룹 관리">Group Management</a></div>
+    <div class="sidebar_m<%= now_loc=='idol'?'_s':''%>"><a href="/idol" title="아이돌 관리">Idol Management</a></div>
+    <div class="sidebar_m<%= now_loc=='manager'?'_s':''%>"><a href="/manager" title="매니저 관리">Manager Management</a></div>
+    <div class="sidebar_m<%= now_loc=='producer'?'_s':''%>"><a href="/producer" title="프로듀서 관리">Producer Management</a></div>
+    <div class="sidebar_m<%= now_loc=='mail'?'_s':''%>"><a href="/mail" title="메일 관리">Mail Management</a></div>
 
-    <div class="sidebar_t">테이블 관리</div>
-    <div class="sidebar_m<%= now_loc=='schedule'?'_s':''%>"><a href="/schedule">Schedule</a></div>
-    <div class="sidebar_m<%= now_loc=='mission'?'_s':''%>"><a href="/mission">Mission</a></div>
-    <div class="sidebar_m<%= now_loc=='mission_type'?'_s':''%>"><a href="/mission_type">Mission Type</a></div>
+    <div class="sidebar_t">Table Management</div>
+    <div class="sidebar_m<%= now_loc=='schedule'?'_s':''%>"><a href="/schedule" title="일정 관리">Schedule</a></div>
+    <div class="sidebar_m<%= now_loc=='mission'?'_s':''%>"><a href="/mission" title="미션 관리">Mission</a></div>
+    <div class="sidebar_m<%= now_loc=='mission_type'?'_s':''%>"><a href="/mission_type" title="미션 타입">Mission Type</a></div>
 
-    <div class="sidebar_m<%= now_loc=='npc'?'_s':''%>"><a href="/npc">NPC</a></div>
-    <div class="sidebar_m<%= now_loc=='exp'?'_s':''%>"><a href="/exp">EXP</a></div>
+    <div class="sidebar_m<%= now_loc=='npc'?'_s':''%>"><a href="/npc" title="NPC 정보">NPC</a></div>
+    <div class="sidebar_m<%= now_loc=='exp'?'_s':''%>"><a href="/exp" title="경험치 정보">EXP</a></div>
 
-    <div class="sidebar_m<%= now_loc=='item'?'_s':''%>"><a href="/item">Item</a></div>
+    <div class="sidebar_m<%= now_loc=='item'?'_s':''%>"><a href="/item" title="아이템 정보">Item</a></div>
 
-    <div class="sidebar_m<%= now_loc=='csv'?'_s':''%>"><a href="/csv">엑셀파일 인서트</a></div>
+    <div class="sidebar_m<%= now_loc=='csv'?'_s':''%>"><a href="/csv" title="엑셀 파일 데이터 일괄 등록">Excel Insert</a></div>
 
 
-	<div class="sidebar_t">시스템 관리</div>
-    <div class="sidebar_m"><a href="/admin">관리자 계정 관리</a></div>
+	<div class="sidebar_t">System Management</div>
+    <div class="sidebar_m"><a href="/admin" title="관리자 계정 관리">Admin Account Management</a></div>
 
 
 

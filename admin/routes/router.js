@@ -17,6 +17,7 @@ const {getAdminList, createAdmin} = require("../controllers/adminController");
 const {getNpcList, createNpc, updateNpc, deleteNpc} = require("../controllers/npcController");
 const {getIdolList} = require("../controllers/idolController");
 const {getScheduleList, createSchedule, updateSchedule, deleteSchedule} = require("../controllers/scheduleController");
+const {getMailList, createMail, deleteMail} = require("../controllers/mailController");
 const {getItemList, createItem, updateItem, deleteItem} = require("../controllers/itemController");
 const {chkUserLogin} = require("../controllers/loginController");
 const {getTokenAiley} = require("../controllers/apiController");
@@ -231,6 +232,11 @@ router.route("/schedule")
 .put(updateSchedule)
 .delete(deleteSchedule)
 .post(createSchedule);
+
+router.route("/mail")
+.get(getMailList)
+.delete(deleteMail)
+.post(createMail);
 
 router.route("/mission")
 .get(getMissionList)

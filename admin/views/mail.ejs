@@ -1,20 +1,20 @@
 <%- include('./layouts/header') %>
 
 <script>
-    function showScheduleForm(){
+    function showMailForm(){
         $("div#bk_bg").show();
-        $("div#form_schedule").show();
+        $("div#form_mail").show();
     }
 
-    function shutScheduleForm(){
+    function shutMailForm(){
         $("div#bk_bg").hide();
-        $("div#form_schedule").hide();
+        $("div#form_mail").hide();
     }
 
-    function goScheduleForm(){
+    function goMailForm(){
 
         // form to json
-        var formData= $('form[name=form_schedule]').serializeArray();
+        var formData= $('form[name=form_mail]').serializeArray();
         var object = {};
         for (var i = 0; i <formData.length; i++){
             object[formData[i]['name']] =formData[i]['value'];
@@ -23,7 +23,7 @@
 
         // submit data
         $.ajax({
-            url: "/schedule",
+            url: "/mail",
             type: "POST",
             dataType: "json",
             data: json,
@@ -32,8 +32,8 @@
 
                 console.log(xhr.responseText);
 
-                if(xhr.responseText == "Insert Schedule Successfully"){
-                    alert('스케줄이 생성되었습니다');
+                if(xhr.responseText == "Insert Mail Successfully"){
+                    alert('메일이 생성되었습니다');
                     location.reload();
                 }
 
@@ -43,7 +43,7 @@
 
 
 
-    function deleteMail(schedule){
+    function deleteMail(mail){
         var conque = confirm("삭제하시겠습니까?");
 
         if(conque == false){
@@ -51,7 +51,7 @@
         }
 
         // form to json
-        var formData= $('form[name=form_schedule_'+schedule+']').serializeArray();
+        var formData= $('form[name=form_mail_'+mail+']').serializeArray();
         var object = {};
         for (var i = 0; i <formData.length; i++){
             object[formData[i]['name']] =formData[i]['value'];
@@ -60,7 +60,7 @@
 
         // submit data
         $.ajax({
-            url: "/schedule",
+            url: "/mail",
             type: "DELETE",
             dataType: "json",
             data: json,
@@ -69,8 +69,8 @@
 
                 console.log(xhr.responseText);
 
-                if(xhr.responseText == "delete Schedule Successfully"){
-                    alert('스케줄이 삭제되었습니다');
+                if(xhr.responseText == "delete Mail Successfully"){
+                    alert('메일이 삭제되었습니다');
                     location.reload();
                 }
 
@@ -81,14 +81,14 @@
 
 </script>
 
-<div id="bk_bg" class="bk_bg" onclick="shutScheduleForm()"></div>
+<div id="bk_bg" class="bk_bg" onclick="shutMailForm()"></div>
 
-<div class="create_w" id="form_schedule">
+<div class="create_w" id="form_mail">
 
-    <form name="form_schedule">
+    <form name="form_mail">
         <div class="create_t">
             <div class="create_t_t">메일 생성</div>
-            <div class="create_t_bt" onclick="shutScheduleForm()">닫기</div>
+            <div class="create_t_bt" onclick="shutMailForm()">닫기</div>
             <div class="clear"></div>
         </div>
         <div class="clear"></div>
@@ -147,36 +147,26 @@
 
 	<div class="bbs_t">
 		<div class="td5">No</div>
-		<div class="td15">이름</div>
-		<div class="td5">개방레벨</div>
-        <div class="td10">개방루비</div>
-        <div class="td10">요구exp</div>
-        <div class="td5">시간(분)</div>
-        <div class="td10">보상인기</div>
-        <div class="td10">보상경험치</div>
-        <div class="td10">보상매력</div>
-        <div class="td10">보상루비</div>
-		<div class="td5">수정</div>
+		<div class="td10">보낸사람</div>
+		<div class="td10">받는사람</div>
+        <div class="td20">제목</div>
+        <div class="td20">보낸 날짜</div>
+		<div class="td5">읽음</div>
         <div class="td5">삭제</div>
 		<div class="clear"></div>
 	</div>
 
 <% list.forEach(ls => { %>
-    <form name="form_schedule_<%=ls.num%>" id="form_schedule_<%=ls.num%>" method="post">
-    <input type="hidden" name="num" value="<%= ls.num %>" />
+    <form name="form_mail_<%=ls.id%>" id="form_mail_<%=ls.id%>" method="post">
+    <input type="hidden" name="id" value="<%= ls.id %>" />
     <div class="bbs_c">
-		<div class="td5"><%= ls.num %></div>
-		<div class="td15"><input type="text" name="name" class="bbs_ipt" value="<%= ls.name %>" /></div>
-        <div class="td5"><input type="number" name="req_level" class="bbs_ipt" value="<%= ls.req_level %>" /></div>
-        <div class="td10"><input type="number" name="req_ruby" class="bbs_ipt" value="<%= ls.req_ruby %>" /></div>
-        <div class="td10"><input type="number" name="req_exp" class="bbs_ipt" value="<%= ls.req_exp %>" /></div>
-        <div class="td5"><input type="number" name="req_time" class="bbs_ipt" value="<%= ls.req_time %>" /></div>
-        <div class="td10"><input type="number" name="reward_popular" class="bbs_ipt" value="<%= ls.reward_popular %>" /></div>
-        <div class="td10"><input type="number" name="reward_exp" class="bbs_ipt" value="<%= ls.reward_exp %>" /></div>
-        <div class="td10"><input type="number" name="reward_attract" class="bbs_ipt" value="<%= ls.reward_attract %>" /></div>
-        <div class="td10"><input type="number" name="reward_ruby" class="bbs_ipt" value="<%= ls.reward_ruby %>" /></div>
-        <div class="td5" onclick="updateSchedule(<%= ls.num %>)">수정</div>
-        <div class="td5" onclick="deleteSchedule(<%= ls.num %>)">삭제</div>		
+		<div class="td5"><%= ls.id %></div>
+		<div class="td10"><%= ls.sender_name %></div>
+        <div class="td10"><%= ls.receiver_name %></div>
+        <div class="td20"><%= ls.title %></div>
+        <div class="td20"><%= ls.sent_date %></div>
+        <div class="td5"><%= ls.is_read %></div>
+        <div class="td5" onclick="deleteMail(<%= ls.id %>)">삭제</div>		
         <div class="clear"></div>
 	</div>
     </form>

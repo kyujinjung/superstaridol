@@ -3,7 +3,7 @@ const conn = db.conn;
 const asyncHandler = require("express-async-handler");
 
 const getMailList = asyncHandler(async(req, res) => {
-        conn.query("select * from schedule where isActive = 0 ", (req,resdb) => {
+        conn.query("select * from mail", (req,resdb) => {
             res.render("mail", {heading : "LIST", list : resdb, now_loc : "mail" });
         })
 });

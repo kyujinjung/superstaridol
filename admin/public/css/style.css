@@ -85,6 +85,7 @@ div.sidebar_m_s a {text-decoration: none; color: white}
 /* create box */
 
 .create_w {display: none; position: fixed; z-index: 1001; width: 700px; height: 700px; top: calc(50vh - 400px); left: calc(50% - 350px); background-color: white; border-radius: 10px; overflow-y: scroll;}
+.create_bw {display: none; position: fixed; z-index: 1001; width: 1200px; height: 700px; top: calc(50vh - 400px); left: calc(50% - 600px); background-color: white; border-radius: 10px;}
 .create_t {height: 49px; line-height: 50px; border-bottom: 1px solid #dfdfdf; padding: 0px 30px}
 .create_t_t {float: left; font-size: 16px; font-weight: bold}
 .create_t_bt {float: right; font-size: 14px; color: gray; cursor: pointer}

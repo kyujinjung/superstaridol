@@ -83,7 +83,7 @@
 
 <div id="bk_bg" class="bk_bg" onclick="shutMailForm()"></div>
 
-<div class="create_w" id="form_mail">
+<div class="create_bw" id="form_mail">
 
     <form name="form_mail">
         <div class="create_t">
@@ -93,36 +93,21 @@
         </div>
         <div class="clear"></div>
 
-        <div class="create_txt">스케줄 이름</div>
-        <input type="text" name="name" class="ipt_create_txt" placeholder="스케줄 이름 입력" />
+        <div class="create_txt">Mail Type</div>
+        <input type="text" name="name" class="ipt_create_txt" placeholder="메일 타입 입력" />
 
-        <div class="create_txt">개방 레벨</div>
-        <input type="number" name="req_level" class="ipt_create_txt" />
+        <div class="create_txt">Item ID</div>
+        <input type="text" name="req_level" class="ipt_create_txt" placeholder="아이템 ID"/>
 
-        <div class="create_txt">개방 비용</div>
-        <input type="number" name="req_ruby" class="ipt_create_txt" />
+        <div class="create_txt">Value</div>
+        <input type="number" name="reward_attract" class="ipt_create_txt" placeholder="금액" />
 
-        <div class="create_txt">요구 EXP</div>
-        <input type="number" name="req_exp" class="ipt_create_txt" />
-
-        <div class="create_txt">소요시간(분)</div>
-        <input type="number" name="req_time" class="ipt_create_txt" />
-
-        <div class="create_txt">보상 인기도</div>
-        <input type="number" name="reward_popular" class="ipt_create_txt" />
-
-        <div class="create_txt">보상 경험치</div>
-        <input type="number" name="reward_exp" class="ipt_create_txt" />
-
-        <div class="create_txt">보상 매력도</div>
-        <input type="number" name="reward_attract" class="ipt_create_txt" />
-
-        <div class="create_txt">보상 루비</div>
-        <input type="number" name="reward_ruby" class="ipt_create_txt" />
+        <div class="create_txt">내용</div>
+        <input type="text" name="reward_ruby" class="ipt_create_txt" />
 
         <div class="create_b">
-            <div class="create_b_bt_s" onclick="goScheduleForm()">등록</div>
-            <div class="create_b_bt" onclick="shutScheduleForm()">취소</div>
+            <div class="create_b_bt_s" onclick="goMailForm()">등록</div>
+            <div class="create_b_bt" onclick="shutMailForm()">취소</div>
             <div class="clear"></div>
         </div>
 
@@ -140,7 +125,7 @@
             <div class="bt_lef_type_1">검색</div>
             <div class="clear"></div>
         </div>
-        <div class="bt_rig_type_1" onclick="showScheduleForm()">메일 생성</div>
+        <div class="bt_rig_type_1" onclick="showMailForm()">메일 생성</div>
         <div class="clear"></div>
     </div>
 
